@@ -6,21 +6,13 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { DpAppAnimations } from './app.animation';
 
-export const AppAnimations = [
-  trigger('heroState', [
-    state('inactive', style({
-      backgroundColor: '#eee',
-      transform: 'scale(1)'
-    })),
-    state('active', style({
-      backgroundColor: '#cfd8dc',
-      transform: 'scale(1.1)'
-    })),
-    transition('inactive => active', animate('100ms ease-in')),
-    transition('active => inactive', animate('100ms ease-out'))
-  ])
-];
+let animationObj = new DpAppAnimations();
+
+let textAnimStates = animationObj.SetTrigger('heroState');
+
+export const AppAnimations = [].concat(textAnimStates);
 
 @Component({
   selector: 'app-root',
